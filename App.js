@@ -37,9 +37,9 @@ export default function App() {
             flex: 1,
             justifyContent: 'center',
             alignItems: 'center',
-            backgrouncColor: isDarkMode ? Colors.black : Colors.white,
           }}>
           <Text>Hello, world!</Text>
+          <Text>Hello?</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
