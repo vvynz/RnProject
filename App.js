@@ -8,6 +8,7 @@ import {
   Text,
   useColorScheme,
   View,
+  Image,
 } from 'react-native';
 
 import {
@@ -39,7 +40,17 @@ export default function App() {
             alignItems: 'center',
           }}>
           <Text>Hello, world!</Text>
-          <Text>Hello?</Text>
+        </View>
+        <View style={{flex: 2, justifyContent: 'center', alignItems: 'center'}}>
+          <Text>Test</Text>
+          <Image
+            source={{uri: 'https://randomuser.me/api/portraits/women/12.jpg'}}
+            style={{
+              width: 100,
+              height: 100,
+              borderRadius: 100 / 2,
+            }}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
