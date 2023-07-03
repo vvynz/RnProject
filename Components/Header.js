@@ -1,10 +1,10 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-const Header = () => {
+export default function Header() {
   return (
     <View>
       <Text>Shopping List</Text>
     </View>
   );
-};
+}
