@@ -19,6 +19,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import Header from './Components/Header';
+
 export default function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -33,13 +35,8 @@ export default function App() {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <ScrollView style={backgroundStyle}>
-        <View
-          style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <Text>Hello, world!</Text>
+        <View>
+          <Header />
         </View>
         <View style={{flex: 2, justifyContent: 'center', alignItems: 'center'}}>
           <Text>Test</Text>
