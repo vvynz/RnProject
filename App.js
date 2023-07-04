@@ -38,6 +38,7 @@ export default function App() {
       item: 'lemonade',
     },
   ]);
+
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -53,6 +54,10 @@ export default function App() {
       <ScrollView style={backgroundStyle}>
         <View>
           <Header />
+          <FlatList
+            data={items}
+            renderItem={({item}) => <Text>{item.item}</Text>}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
