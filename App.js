@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {uuid} from 'uuidv4';
 
 import {
   SafeAreaView,
@@ -21,6 +22,20 @@ import {
 import Header from './Components/Header.js';
 
 export default function App() {
+  const [items, setItems] = useState([
+    {
+      id: uuid(),
+      item: 'cheese',
+    },
+    {
+      id: uuid(),
+      item: 'chips',
+    },
+    {
+      id: uuid(),
+      item: 'lemonade',
+    },
+  ]);
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
