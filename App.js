@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
-import {uuid} from 'uuidv4';
+import 'react-native-get-random-values';
+import {v4 as uuidv4} from 'uuid';
 
 import {
+  FlatList,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -24,15 +26,15 @@ import Header from './Components/Header.js';
 export default function App() {
   const [items, setItems] = useState([
     {
-      id: uuid(),
+      id: uuidv4(),
       item: 'cheese',
     },
     {
-      id: uuid(),
+      id: uuidv4(),
       item: 'chips',
     },
     {
-      id: uuid(),
+      id: uuidv4(),
       item: 'lemonade',
     },
   ]);
