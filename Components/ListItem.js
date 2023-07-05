@@ -5,9 +5,9 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 export default function ListItem({item}) {
   return (
     <TouchableOpacity style={styles.listItem}>
-      <View>
+      <View style={styles.listItemView}>
         <Text style={styles.listItemText}>{item.item}</Text>
-        <Icon name="close-circle-outline" size={12} color="red" />
+        <Icon name="close-circle-outline" size={18} color="red" />
       </View>
     </TouchableOpacity>
   );
@@ -18,8 +18,14 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(39, 39, 39, 0.95)',
     padding: 12,
   },
+  listItemView: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   listItemText: {
     color: '#f8f8ff',
     fontSize: 20,
   },
+  listItemIcon: {},
 });
