@@ -22,6 +22,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import Header from './Components/Header.js';
+import ListItem from './Components/ListItem';
 
 export default function App() {
   const [items, setItems] = useState([
@@ -51,15 +52,10 @@ export default function App() {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <ScrollView style={backgroundStyle}>
-        <View>
-          <Header />
-          <FlatList
-            data={items}
-            renderItem={({item}) => <Text>{item.item}</Text>}
-          />
-        </View>
-      </ScrollView>
+      <View>
+        <Header />
+        <FlatList data={items} renderItem={({item}) => <ListItem />} />
+      </View>
     </SafeAreaView>
   );
 }
