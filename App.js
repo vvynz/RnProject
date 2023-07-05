@@ -54,7 +54,10 @@ export default function App() {
       />
       <View>
         <Header />
-        <FlatList data={items} renderItem={({item}) => <ListItem />} />
+        <FlatList
+          data={items}
+          renderItem={({item}) => <ListItem item={item} />}
+        />
       </View>
     </SafeAreaView>
   );
