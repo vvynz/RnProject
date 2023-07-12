@@ -21,6 +21,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import {deleteItem} from './hooks.js';
+
 import Header from './Components/Header.js';
 import ListItem from './Components/ListItem';
 
