@@ -21,7 +21,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import {deleteItem} from './hooks.js';
+import hooks from './hooks';
 
 import Header from './Components/Header.js';
 import ListItem from './Components/ListItem';
@@ -43,6 +43,7 @@ export default function App() {
   ]);
 
   const isDarkMode = useColorScheme() === 'dark';
+  const {deleteItem} = hooks();
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -56,12 +57,20 @@ export default function App() {
       />
       <View>
         <Header />
-        <FlatList
+        {/* <FlatList
           data={items}
           renderItem={({item}) => (
-            <ListItem item={item} deleteItem={deleteItem} />
+            <ListItem item={item} items={items} deleteItem={deleteItem} />
           )}
-        />
+        /> */}
+        {items.map(item => (
+          <ListItem
+            key={item.id}
+            item={item}
+            items={setItems}
+            deleteItem={deleteItem}
+          />
+        ))}
       </View>
     </SafeAreaView>
   );

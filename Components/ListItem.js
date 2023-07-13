@@ -2,8 +2,8 @@ import React from 'react';
 import {Text, TouchableOpacity, StyleSheet, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default function ListItem({item, deleteItem}) {
-  console.log(item.item);
+export default function ListItem({item, setItems, deleteItem}) {
+  // console.log(items);
   return (
     <TouchableOpacity style={styles.listItem}>
       <View style={styles.listItemView}>
@@ -12,7 +12,7 @@ export default function ListItem({item, deleteItem}) {
           name="close-circle-outline"
           size={18}
           color="red"
-          onClick={() => deleteItem(item.id, item)}
+          onPress={() => deleteItem(item.id, setItems)}
         />
       </View>
     </TouchableOpacity>
