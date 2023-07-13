@@ -58,7 +58,9 @@ export default function App() {
         <Header />
         <FlatList
           data={items}
-          renderItem={({item}) => <ListItem item={item} />}
+          renderItem={({item}) => (
+            <ListItem item={item} deleteItem={deleteItem} />
+          )}
         />
       </View>
     </SafeAreaView>
