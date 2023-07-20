@@ -25,6 +25,7 @@ import hooks from './hooks';
 
 import Header from './Components/Header.js';
 import ListItem from './Components/ListItem';
+import AddItem from './Components/AddItem';
 
 export default function App() {
   const [items, setItems] = useState([
@@ -69,6 +70,7 @@ export default function App() {
             <ListItem item={item} items={items} deleteItem={deleteItem} />
           )}
         /> */}
+        <AddItem />
         {items.map(item => (
           <ListItem
             key={item.id}
