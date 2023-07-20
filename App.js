@@ -43,7 +43,13 @@ export default function App() {
   ]);
 
   const isDarkMode = useColorScheme() === 'dark';
-  const {deleteItem} = hooks();
+  // const {deleteItem} = hooks();
+
+  const deleteItem = id => {
+    setItems(prev => {
+      return prev.filter(item => item.id !== id);
+    });
+  };
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -67,7 +73,7 @@ export default function App() {
           <ListItem
             key={item.id}
             item={item}
-            items={setItems}
+            items={items}
             deleteItem={deleteItem}
           />
         ))}
