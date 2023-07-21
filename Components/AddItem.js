@@ -1,25 +1,31 @@
 import React from 'react';
 import {
   Button,
+  Pressable,
+  Text,
   TextInput,
   TouchableOpacity,
   StyleSheet,
   View,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default function AddItem() {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity style={styles.addItem}>
       <View style={styles.addItemView}>
         <TextInput style={styles.addItemInput} />
-        <Button title="Add" color="#a5a4a4" style={styles.addItemBtn} />
+        <Pressable style={styles.addBtn}>
+          <Text style={styles.addBtnText}>Add</Text>
+        </Pressable>
       </View>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
+  addItem: {
+    backgroundColor: 'rgba(39, 39, 39, 0.95)',
+  },
   addItemView: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -30,12 +36,18 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#a5a4a4',
     padding: 10,
+    color: '#f8f8ff',
   },
-  addItemBtn: {
+  addBtn: {
     height: 40,
-    margin: 10,
+    marginHorizontal: 10,
     padding: 10,
     borderWidth: 1,
     borderColor: '#a5a4a4',
+  },
+  addBtnText: {
+    textAlign: 'center',
+    fontSize: 18,
+    color: '#f8f8ff',
   },
 });
