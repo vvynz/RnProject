@@ -1,19 +1,19 @@
 import React from 'react';
 import {
-  Text,
+  Button,
   TextInput,
   TouchableOpacity,
   StyleSheet,
   View,
 } from 'react-native';
-import {create} from 'react-test-renderer';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default function AddItem() {
   return (
     <TouchableOpacity>
       <View style={styles.addItemView}>
         <TextInput style={styles.addItemInput} />
-        <Text>+</Text>
+        <Button title="Add" color="#a5a4a4" style={styles.addItemBtn} />
       </View>
     </TouchableOpacity>
   );
@@ -30,5 +30,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#a5a4a4',
     padding: 10,
+  },
+  addItemBtn: {
+    height: 40,
+    margin: 10,
+    padding: 10,
+    borderWidth: 1,
+    borderColor: '#a5a4a4',
   },
 });
