@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 
-export default function AddItem() {
+export default function AddItem({listItemFormData, setListItemFormdata}) {
   return (
     <TouchableOpacity style={styles.addItem}>
       <View style={styles.addItemView}>
