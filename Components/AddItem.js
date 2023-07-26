@@ -10,6 +10,10 @@ import {
 } from 'react-native';
 
 export default function AddItem({listItemFormData, setListItemFormdata}) {
+  const onSubmit = e => {
+    e.preventDefault();
+  };
+
   const setFormChange = e => {
     e.preventDefault();
 
@@ -27,6 +31,8 @@ export default function AddItem({listItemFormData, setListItemFormdata}) {
       <View style={styles.addItemView}>
         <TextInput
           onChange={e => setFormChange(e)}
+          value={listItemFormData.item}
+          name="listItem"
           style={styles.addItemInput}
         />
         <Pressable style={styles.addBtn}>
