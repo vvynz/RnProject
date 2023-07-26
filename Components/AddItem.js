@@ -9,9 +9,23 @@ import {
   View,
 } from 'react-native';
 
-export default function AddItem({listItemFormData, setListItemFormdata}) {
+export default function AddItem({
+  listItemFormData,
+  setListItemFormdata,
+  setItems,
+  uuidv4,
+}) {
   const onSubmit = e => {
     e.preventDefault();
+
+    const newListItem = {
+      id: uuidv4(),
+      item: listItemFormData.item,
+    };
+
+    const newData = [...listItems, newListItem];
+
+    setItems(newData);
   };
 
   const setFormChange = e => {
@@ -35,7 +49,7 @@ export default function AddItem({listItemFormData, setListItemFormdata}) {
           name="listItem"
           style={styles.addItemInput}
         />
-        <Pressable style={styles.addBtn}>
+        <Pressable style={styles.addBtn} onSubmit={onSubmit}>
           <Text style={styles.addBtnText}>Add</Text>
         </Pressable>
       </View>

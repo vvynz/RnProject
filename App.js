@@ -77,8 +77,10 @@ export default function App() {
           )}
         /> */}
         <AddItem
+          setItems={setItems}
           listItemFormData={listItemFormData}
           setListItemFormData={setListItemFormData}
+          uuidv4={uuidv4}
         />
         {items.map(item => (
           <ListItem
