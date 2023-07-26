@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Button,
   Pressable,
@@ -9,24 +9,29 @@ import {
   View,
 } from 'react-native';
 
-export default function AddItem({
-  listItemFormData,
-  setListItemFormdata,
-  setItems,
-  uuidv4,
-}) {
+export default function AddItem({setItems, uuidv4}) {
+  const [listItemFormData, setListItemFormData] = useState([
+    {
+      id: uuidv4(),
+      item: '',
+    },
+  ]);
+
   const onSubmit = e => {
     e.preventDefault();
 
-    const newListItem = {
-      id: uuidv4(),
-      item: listItemFormData.item,
-    };
+    // const newListItem = {
+    //   id: uuidv4(),
+    //   item: listItemFormData.item,
+    // };
 
-    const newData = [...listItems, newListItem];
+    // const newData = [newListItem, ...prevListItems];
 
-    setItems(newData);
+    setItems(prev => {
+      return [{id: uuidv4(), item: listItemFormData.item}, ...prev];
+    });
   };
+  console.log(listItemFormData);
 
   const setFormChange = e => {
     e.preventDefault();
@@ -37,33 +42,33 @@ export default function AddItem({
 
     newListItem[name] = value;
 
-    setListItemFormdata(newListItem);
+    setListItemFormData(newListItem);
   };
 
   return (
-    <TouchableOpacity style={styles.addItem}>
-      <View style={styles.addItemView}>
-        <TextInput
-          onChange={e => setFormChange(e)}
-          value={listItemFormData.item}
-          name="listItem"
-          style={styles.addItemInput}
-        />
-        <Pressable style={styles.addBtn} onSubmit={onSubmit}>
-          <Text style={styles.addBtnText}>Add</Text>
-        </Pressable>
-      </View>
-    </TouchableOpacity>
+    <View style={styles.addItemView}>
+      <TextInput
+        onChange={e => setFormChange(e)}
+        keyboardType="default"
+        value={listItemFormData.item}
+        name="item"
+        style={styles.addItemInput}
+      />
+      <TouchableOpacity onPress={e => onSubmit(e)}>
+        {/* <Pressable style={styles.addBtn}> */}
+        <Text style={styles.addBtnText}>Add item</Text>
+        {/* </Pressable> */}
+      </TouchableOpacity>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  addItem: {
-    backgroundColor: 'rgba(39, 39, 39, 0.95)',
-  },
+  addItem: {},
   addItemView: {
     display: 'flex',
     justifyContent: 'space-between',
+    backgroundColor: 'rgba(39, 39, 39, 0.95)',
   },
   addItemInput: {
     height: 40,
@@ -73,16 +78,14 @@ const styles = StyleSheet.create({
     padding: 10,
     color: '#f8f8ff',
   },
-  addBtn: {
+  addBtnText: {
     height: 40,
     marginHorizontal: 10,
     padding: 10,
-    borderWidth: 1,
-    borderColor: '#a5a4a4',
-  },
-  addBtnText: {
     textAlign: 'center',
     fontSize: 18,
     color: '#f8f8ff',
+    borderWidth: 1,
+    borderColor: '#a5a4a4',
   },
 });

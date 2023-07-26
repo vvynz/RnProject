@@ -42,12 +42,6 @@ export default function App() {
       item: 'lemonade',
     },
   ]);
-  const [listItemFormData, setListItemFormData] = useState([
-    {
-      id: uuidv4(),
-      item: '',
-    },
-  ]);
 
   const isDarkMode = useColorScheme() === 'dark';
   // const {deleteItem} = hooks();
@@ -76,12 +70,7 @@ export default function App() {
             <ListItem item={item} items={items} deleteItem={deleteItem} />
           )}
         /> */}
-        <AddItem
-          setItems={setItems}
-          listItemFormData={listItemFormData}
-          setListItemFormData={setListItemFormData}
-          uuidv4={uuidv4}
-        />
+        <AddItem setItems={setItems} uuidv4={uuidv4} />
         {items.map(item => (
           <ListItem
             key={item.id}
