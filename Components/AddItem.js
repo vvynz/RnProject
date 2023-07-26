@@ -10,10 +10,25 @@ import {
 } from 'react-native';
 
 export default function AddItem({listItemFormData, setListItemFormdata}) {
+  const setFormChange = e => {
+    e.preventDefault();
+
+    const {name, value} = e.target;
+
+    const newListItem = {...listItemFormData};
+
+    newListItem[name] = value;
+
+    setListItemFormdata(newListItem);
+  };
+
   return (
     <TouchableOpacity style={styles.addItem}>
       <View style={styles.addItemView}>
-        <TextInput style={styles.addItemInput} />
+        <TextInput
+          onChange={e => setFormChange(e)}
+          style={styles.addItemInput}
+        />
         <Pressable style={styles.addBtn}>
           <Text style={styles.addBtnText}>Add</Text>
         </Pressable>
