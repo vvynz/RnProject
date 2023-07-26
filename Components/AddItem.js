@@ -10,15 +10,10 @@ import {
 } from 'react-native';
 
 export default function AddItem({setItems, uuidv4}) {
-  const [listItemFormData, setListItemFormData] = useState([
-    {
-      id: uuidv4(),
-      item: '',
-    },
-  ]);
+  const [listItemFormData, setListItemFormData] = useState('');
 
-  const onSubmit = e => {
-    e.preventDefault();
+  const onSubmit = () => {
+    // e.preventDefault();
 
     // const newListItem = {
     //   id: uuidv4(),
@@ -28,33 +23,26 @@ export default function AddItem({setItems, uuidv4}) {
     // const newData = [newListItem, ...prevListItems];
 
     setItems(prev => {
-      return [{id: uuidv4(), item: listItemFormData.item}, ...prev];
+      return [{id: uuidv4(), item: listItemFormData}, ...prev];
     });
+
+    setListItemFormData('');
   };
   console.log(listItemFormData);
 
-  const setFormChange = e => {
-    e.preventDefault();
-
-    const {name, value} = e.target;
-
-    const newListItem = {...listItemFormData};
-
-    newListItem[name] = value;
-
-    setListItemFormData(newListItem);
+  const setFormChange = textValue => {
+    setListItemFormData(textValue);
   };
 
   return (
     <View style={styles.addItemView}>
       <TextInput
-        onChange={e => setFormChange(e)}
-        keyboardType="default"
-        value={listItemFormData.item}
+        onChangeText={setFormChange}
         name="item"
+        value={listItemFormData}
         style={styles.addItemInput}
       />
-      <TouchableOpacity onPress={e => onSubmit(e)}>
+      <TouchableOpacity onPress={() => onSubmit()}>
         {/* <Pressable style={styles.addBtn}> */}
         <Text style={styles.addBtnText}>Add item</Text>
         {/* </Pressable> */}

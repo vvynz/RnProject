@@ -42,6 +42,7 @@ export default function App() {
       item: 'lemonade',
     },
   ]);
+  console.log('items =', items);
 
   const isDarkMode = useColorScheme() === 'dark';
   // const {deleteItem} = hooks();
@@ -75,7 +76,7 @@ export default function App() {
           <ListItem
             key={item.id}
             item={item}
-            items={items}
+            setItems={setItems}
             deleteItem={deleteItem}
           />
         ))}
