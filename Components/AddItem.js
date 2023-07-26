@@ -9,25 +9,9 @@ import {
   View,
 } from 'react-native';
 
-export default function AddItem({setItems, uuidv4}) {
+export default function AddItem({onSubmit, setItems, uuidv4}) {
   const [listItemFormData, setListItemFormData] = useState('');
 
-  const onSubmit = () => {
-    // e.preventDefault();
-
-    // const newListItem = {
-    //   id: uuidv4(),
-    //   item: listItemFormData.item,
-    // };
-
-    // const newData = [newListItem, ...prevListItems];
-
-    setItems(prev => {
-      return [{id: uuidv4(), item: listItemFormData}, ...prev];
-    });
-
-    setListItemFormData('');
-  };
   console.log(listItemFormData);
 
   const setFormChange = textValue => {
@@ -42,7 +26,7 @@ export default function AddItem({setItems, uuidv4}) {
         value={listItemFormData}
         style={styles.addItemInput}
       />
-      <TouchableOpacity onPress={() => onSubmit()}>
+      <TouchableOpacity onPress={() => onSubmit(listItemFormData)}>
         {/* <Pressable style={styles.addBtn}> */}
         <Text style={styles.addBtnText}>Add item</Text>
         {/* </Pressable> */}

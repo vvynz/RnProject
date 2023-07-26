@@ -53,6 +53,23 @@ export default function App() {
     });
   };
 
+  const onSubmit = item => {
+    // e.preventDefault();
+
+    // const newListItem = {
+    //   id: uuidv4(),
+    //   item: listItemFormData.item,
+    // };
+
+    // const newData = [newListItem, ...prevListItems];
+
+    setItems(prev => {
+      return [{id: uuidv4(), item}, ...prev];
+    });
+
+    // setListItemFormData('');
+  };
+
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
@@ -71,7 +88,7 @@ export default function App() {
             <ListItem item={item} items={items} deleteItem={deleteItem} />
           )}
         /> */}
-        <AddItem setItems={setItems} uuidv4={uuidv4} />
+        <AddItem onSubmit={onSubmit} setItems={setItems} uuidv4={uuidv4} />
         {items.map(item => (
           <ListItem
             key={item.id}
