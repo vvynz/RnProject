@@ -42,6 +42,7 @@ export default function App() {
       item: 'lemonade',
     },
   ]);
+  const [textInput, setTextInput] = useState('');
   console.log('items =', items);
 
   const isDarkMode = useColorScheme() === 'dark';
@@ -67,7 +68,11 @@ export default function App() {
       return [{id: uuidv4(), item}, ...prev];
     });
 
-    // setListItemFormData('');
+    clear();
+  };
+
+  const clear = () => {
+    setTextInput('');
   };
 
   const backgroundStyle = {
@@ -88,7 +93,13 @@ export default function App() {
             <ListItem item={item} items={items} deleteItem={deleteItem} />
           )}
         /> */}
-        <AddItem onSubmit={onSubmit} setItems={setItems} uuidv4={uuidv4} />
+        <AddItem
+          onSubmit={onSubmit}
+          setItems={setItems}
+          uuidv4={uuidv4}
+          textInput={textInput}
+          setTextInput={setTextInput}
+        />
         {items.map(item => (
           <ListItem
             key={item.id}

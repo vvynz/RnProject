@@ -9,49 +9,22 @@ import {
   View,
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
-export default function AddItem({onSubmit, setItems, uuidv4}) {
-  const [listItemFormData, setListItemFormData] = useState('');
-
-  console.log(listItemFormData);
-
+export default function AddItem({textInput, setTextInput, onSubmit}) {
   const setFormChange = textValue => {
-    setListItemFormData(textValue);
-  };
-
-  const clear = () => {
-    setListItemFormData('');
+    setTextInput(textValue);
   };
 
   return (
     <View style={styles.addItemView}>
-      {listItemFormData.length === 0 ? (
-        <TextInput
-          onChangeText={setFormChange}
-          name="item"
-          value={listItemFormData}
-          style={styles.addItemInput}
-        />
-      ) : (
-        <TextInput
-          onChangeText={setFormChange}
-          name="item"
-          value={listItemFormData}
-          style={styles.addItemInput}>
-          <Icon
-            style={styles.deleteBtn}
-            name="close-thick"
-            size={20}
-            color="red"
-            onPress={() => clear}
-          />
-        </TextInput>
-      )}
-      <TouchableOpacity onPress={() => onSubmit(listItemFormData)}>
-        {/* <Pressable style={styles.addBtn}> */}
+      <TextInput
+        onChangeText={setFormChange}
+        name="item"
+        value={textInput}
+        style={styles.addItemInput}
+      />
+
+      <TouchableOpacity onPress={() => onSubmit(textInput)}>
         <Text style={styles.addBtnText}>Add item</Text>
-        {/* </Pressable> */}
       </TouchableOpacity>
     </View>
   );
