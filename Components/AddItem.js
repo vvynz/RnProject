@@ -9,6 +9,8 @@ import {
   View,
 } from 'react-native';
 
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 export default function AddItem({onSubmit, setItems, uuidv4}) {
   const [listItemFormData, setListItemFormData] = useState('');
 
@@ -18,14 +20,34 @@ export default function AddItem({onSubmit, setItems, uuidv4}) {
     setListItemFormData(textValue);
   };
 
+  const clear = () => {
+    setListItemFormData('');
+  };
+
   return (
     <View style={styles.addItemView}>
-      <TextInput
-        onChangeText={setFormChange}
-        name="item"
-        value={listItemFormData}
-        style={styles.addItemInput}
-      />
+      {listItemFormData.length === 0 ? (
+        <TextInput
+          onChangeText={setFormChange}
+          name="item"
+          value={listItemFormData}
+          style={styles.addItemInput}
+        />
+      ) : (
+        <TextInput
+          onChangeText={setFormChange}
+          name="item"
+          value={listItemFormData}
+          style={styles.addItemInput}>
+          <Icon
+            style={styles.deleteBtn}
+            name="close-thick"
+            size={20}
+            color="red"
+            onPress={() => clear}
+          />
+        </TextInput>
+      )}
       <TouchableOpacity onPress={() => onSubmit(listItemFormData)}>
         {/* <Pressable style={styles.addBtn}> */}
         <Text style={styles.addBtnText}>Add item</Text>
@@ -36,7 +58,6 @@ export default function AddItem({onSubmit, setItems, uuidv4}) {
 }
 
 const styles = StyleSheet.create({
-  addItem: {},
   addItemView: {
     display: 'flex',
     justifyContent: 'space-between',
