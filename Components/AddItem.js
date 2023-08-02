@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
 import {
-  Button,
-  Pressable,
   Text,
   TextInput,
   TouchableOpacity,

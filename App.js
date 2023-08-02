@@ -3,23 +3,17 @@ import 'react-native-get-random-values';
 import {v4 as uuidv4} from 'uuid';
 
 import {
+  Alert,
   FlatList,
   SafeAreaView,
-  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
   useColorScheme,
   View,
-  Image,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import hooks from './hooks';
 
@@ -55,20 +49,20 @@ export default function App() {
   };
 
   const onSubmit = item => {
-    // e.preventDefault();
+    if (!textInput) {
+      Alert.alert('Error', 'Please enter an item', [
+        {
+          text: 'Ok',
+          style: 'default',
+        },
+      ]);
+    } else {
+      setItems(prev => {
+        return [{id: uuidv4(), item}, ...prev];
+      });
 
-    // const newListItem = {
-    //   id: uuidv4(),
-    //   item: listItemFormData.item,
-    // };
-
-    // const newData = [newListItem, ...prevListItems];
-
-    setItems(prev => {
-      return [{id: uuidv4(), item}, ...prev];
-    });
-
-    clear();
+      clear();
+    }
   };
 
   const clear = () => {
