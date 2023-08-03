@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   addItemView: {
     display: 'flex',
     justifyContent: 'space-between',
-    backgroundColor: 'rgba(39, 39, 39, 0.95)',
+    // backgroundColor: 'rgba(39, 39, 39, 0.95)',
   },
   addItemInput: {
     height: 40,

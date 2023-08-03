@@ -21,7 +21,7 @@ export default function ListItem({item, setItems, deleteItem}) {
 
 const styles = StyleSheet.create({
   listItem: {
-    backgroundColor: 'rgba(39, 39, 39, 0.95)',
+    // backgroundColor: 'rgba(39, 39, 39, 0.95)',
     padding: 12,
   },
   listItemView: {

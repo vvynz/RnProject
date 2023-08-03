@@ -10,6 +10,7 @@ import {
   StyleSheet,
   Text,
   useColorScheme,
+  Dimensions,
 } from 'react-native';
 import {View} from 'react-native-ui-lib';
 
@@ -79,7 +80,7 @@ export default function App() {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <View>
+      <View style={styles.container}>
         <Header />
         {/* <FlatList
           data={items}
@@ -106,3 +107,12 @@ export default function App() {
     </SafeAreaView>
   );
 }
+
+const screenHeight = Dimensions.get('screen').height;
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'rgba(39, 39, 39, 0.95)',
+    height: screenHeight,
+  },
+});
