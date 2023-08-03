@@ -10,8 +10,8 @@ import {
   StyleSheet,
   Text,
   useColorScheme,
-  View,
 } from 'react-native';
+import {View} from 'react-native-ui-lib';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 

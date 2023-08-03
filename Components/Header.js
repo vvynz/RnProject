@@ -1,17 +1,20 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
+import {Text, Colors} from 'react-native-ui-lib';
 
 export default function Header() {
   return (
     <View style={styles.header}>
-      <Text style={styles.text}>Shopping List</Text>
+      <Text text30 center style={{color: Colors.textColor}}>
+        Shopping List
+      </Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   header: {
-    height: 50,
+    height: 75,
     padding: 15,
     backgroundColor: '#272727',
   },
@@ -20,4 +23,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
   },
+});
+
+Colors.loadColors({
+  textColor: '#ddbbff',
 });
